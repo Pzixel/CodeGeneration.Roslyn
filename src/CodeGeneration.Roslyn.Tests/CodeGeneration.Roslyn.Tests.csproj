@@ -31,4 +31,8 @@
   </ItemGroup>
 
   <Import Project="..\CodeGeneration.Roslyn.Tasks\build\CodeGeneration.Roslyn.BuildTime.targets" />
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn/CodeGeneration.Roslyn.csproj&quot;&#xD;&#xA;&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn.Attributes/CodeGeneration.Roslyn.Attributes.csproj&quot;&#xD;&#xA;&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn.Tasks/CodeGeneration.Roslyn.Tasks.csproj&quot;&#xD;&#xA;&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn.Tool/CodeGeneration.Roslyn.Tool.csproj&quot;&#xD;&#xA;" />
+  </Target>
 </Project>
