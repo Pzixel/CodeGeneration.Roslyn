@@ -22,6 +22,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGeneration.Roslyn.Tasks", "CodeGeneration.Roslyn.Tasks\CodeGeneration.Roslyn.Tasks.csproj", "{D5240C82-6F90-48F8-9192-DA53EE1B0355}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGeneration.Roslyn.Tests", "CodeGeneration.Roslyn.Tests\CodeGeneration.Roslyn.Tests.csproj", "{D8E7323F-6721-42A5-BADA-496A63DB0A88}"
+	ProjectSection(ProjectDependencies) = postProject
+		{23424A10-0ED4-4906-9CF7-6D34E3F871E2} = {23424A10-0ED4-4906-9CF7-6D34E3F871E2}
+		{09465031-08F8-4632-9C26-AC561B6E3538} = {09465031-08F8-4632-9C26-AC561B6E3538}
+		{0E3F218E-0B47-4925-8FDB-8A8BC4C01DCD} = {0E3F218E-0B47-4925-8FDB-8A8BC4C01DCD}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGeneration.Roslyn.Tests.Generators", "CodeGeneration.Roslyn.Tests.Generators\CodeGeneration.Roslyn.Tests.Generators.csproj", "{8B57E557-EF79-47E4-9396-135850304990}"
 EndProject
@@ -66,5 +71,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF8ADA92-726D-46B1-9CF4-43F01850C2D0}
 	EndGlobalSection
 EndGlobal

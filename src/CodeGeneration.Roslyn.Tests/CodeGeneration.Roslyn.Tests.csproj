@@ -20,19 +20,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CodeGeneration.Roslyn.Tasks\CodeGeneration.Roslyn.Tasks.csproj" />
     <ProjectReference Include="..\CodeGeneration.Roslyn.Tests.Generators\CodeGeneration.Roslyn.Tests.Generators.csproj" />
-    <ProjectReference Include="..\CodeGeneration.Roslyn\CodeGeneration.Roslyn.csproj" />
-    <ProjectReference Include="..\CodeGeneration.Roslyn.Tool\CodeGeneration.Roslyn.Tool.csproj">
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <SkipGetTargetFrameworkProperties>true</SkipGetTargetFrameworkProperties>
-      <UndefineProperties>TargetFramework</UndefineProperties>
-    </ProjectReference>
   </ItemGroup>
 
   <Import Project="..\CodeGeneration.Roslyn.Tasks\build\CodeGeneration.Roslyn.BuildTime.targets" />
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn/CodeGeneration.Roslyn.csproj&quot;&#xD;&#xA;&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn.Attributes/CodeGeneration.Roslyn.Attributes.csproj&quot;&#xD;&#xA;&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn.Tasks/CodeGeneration.Roslyn.Tasks.csproj&quot;&#xD;&#xA;&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn.Tool/CodeGeneration.Roslyn.Tool.csproj&quot;&#xD;&#xA;" />
+    <Exec Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn/CodeGeneration.Roslyn.csproj&quot;" />
+    <Exec Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn.Attributes/CodeGeneration.Roslyn.Attributes.csproj&quot;" />
+    <Exec Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn.Tasks/CodeGeneration.Roslyn.Tasks.csproj&quot;" />
+    <Exec Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot; /t:pack &quot;$(SolutionDir)CodeGeneration.Roslyn.Tool/CodeGeneration.Roslyn.Tool.csproj&quot;" />
+
+    <Exec Command="Install-Package CodeGeneration.Attributes -Source &quot;$(SolutionDir)../bin/Packages/$(Configuration)&quot;" />
+    <Exec Command="Install-Package CodeGeneration.Tasks -Source &quot;$(SolutionDir)../bin/Packages/Packages/$(Configuration)&quot;" />
+    <Exec Command="Install-Package CodeGeneration.Roslyn -Source &quot;$(SolutionDir)../bin/Packages/Packages/$(Configuration)&quot;" />
+    <Exec Command="Install-Package dotnet-codegen -Source &quot;$(SolutionDir)../bin/Packages/Packages/$(Configuration)&quot;" />
   </Target>
 </Project>
